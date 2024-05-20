@@ -1,0 +1,147 @@
+<div class="contenedor gap-3" [ngClass]="{'bg-[#ddd]': showLoader}">
+  <div class="absolute top-4 left-4">
+    <button class="btn-getBack" [routerLink]="['/books/all-books']" >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+    </button>
+  </div>
+  <div class="w-auto flex flex-wrap justify-center">
+    @if(showLoader){
+      <app-loader></app-loader>
+    } @else {
+      <div class="flex gap-y-4 items-center justify-between flex-wrap gap-10 w-3/4 px-10 py-20 shadow-2xl"
+    [ngClass]="{'bg-[#dddddd79]': bookInfo[0].alquilar === 1, 'bg-[#FEFEFE]': bookInfo[0].comprar === 1}">
+      <!-- Contenedor de las imágenes -->
+      <div class="w-[25%]">
+        <img [src]="bookInfo[0].url" [alt]="bookInfo[0].title">
+      </div>
+      <!-- Contenedor de la información -->
+      <aside class="ctn-informacion">
+        <p class="font-perso text-3xl font-bold w-full">
+          {{bookInfo[0].titulo}}
+        </p>
+        <section class="w-full mb-5">
+          <h2 class="font-perso font-bold text-2xl">Descripción:</h2>
+          <p class="pl-6 -mt-2 font-perso text-lg">{{bookInfo[0].descripcion}}</p>
+        </section>
+        <div class="w-2/4 flex justify-center items-center flex-wrap">
+          <section class="w-full">
+            <h2 class="font-perso font-bold subtitles">Genres:</h2>
+            <ul class="flex pb-2 pl-4 gap-2">
+              @for(genre of bookInfo[0].generos; track $index){
+              <li class="font-perso px-3 py-1 rounded-2xl font-bold bg-[#dbdb8f88]">
+                {{genre}}
+              </li>
+              }
+            </ul>
+          </section>
+          <section class="w-full">
+            <h2 class="font-perso font-bold subtitles">
+              Section:
+            </h2>
+            <ul class="flex pb-2 pl-4">
+              <li class="font-perso px-3 py-1 rounded-2xl font-bold bg-[#8fdb9c88]">
+                {{bookInfo[0].seccion}}
+              </li>
+            </ul>
+          </section>
+          <section class="w-full">
+            @if(bookInfo[0].comprar == 1){
+            <h2 class="font-perso font-bold subtitles">
+              Price:
+            </h2>
+            <span class="font-perso text-xl pl-4 font-bold underline underline-offset-2">
+              {{bookInfo[0].valor | currency}}
+            </span>
+            }
+            @if (bookInfo[0].alquilar == 1) {
+            <h2 class="font-perso font-bold subtitles">
+              Acquisition option:
+            </h2>
+            <ul class="flex  pl-4">
+              <li class="px-3 py-1 font-medium text-black bg-[#559955bb] rounded-2xl font-perso text-base">
+                On rent
+              </li>
+            </ul>
+            }
+          </section>
+          <section class="w-full">
+            <h2 class="font-perso font-bold subtitles">Publication year:</h2>
+            <p class="pl-6 -mt-2 font-perso text-lg">{{bookInfo[0].fecha_publicacion | date:'yyyy'}}</p>
+          </section>
+        </div>
+        <div class="w-2/4 flex justify-end items-center flex-wrap">
+          <section class="w-full">
+              <h2 class="font-perso font-bold subtitles">Author:</h2>
+              <p class="pl-6 -mt-2 font-perso text-lg italic">{{bookInfo[0].author}}</p>
+          </section>
+          <section class="w-full">
+            <h2 class="font-perso font-bold subtitles">
+              Quantity in stock:
+            </h2>
+            <ul class="flex pb-2 pl-4">
+              <li class="font-perso px-3 py-1 rounded-2xl font-bold bg-[#8fdb9c88]">
+                {{bookInfo[0].cantidad}} stock/s
+              </li>
+            </ul>
+          </section>
+          <section class="w-full">
+            <h2 class="font-perso font-bold subtitles">
+              Sección:
+            </h2>
+            <ul class="flex pb-2 pl-4">
+              <li class="font-perso px-3 py-1 rounded-2xl font-bold bg-[#8fdb9c88]">
+                {{bookInfo[0].seccion}}
+              </li>
+            </ul>
+          </section>
+          <section class="w-full">
+            <h2 class="font-perso font-bold subtitles">
+              Publisher:
+            </h2>
+            <span class="font-perso text-xl pl-4 font-bold underline underline-offset-2">
+              {{bookInfo[0].editorial}}
+            </span>
+          </section>
+        </div>
+        <div class="w-4/5 flex justify-center mt-10">
+          @if(bookInfo[0].comprar == 1){
+          <div class="ctn-btn">
+            <button class="btn-form bg-[#b5e48c]">
+              <span class="btn-span">
+                Buy now
+              </span>
+              <span class="btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="icon w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          }
+          @if(bookInfo[0].alquilar == 1) {
+          <div class="ctn-btn">
+            <button class="btn-form bg-[#81c3d7]">
+              <span class="btn-span">
+                Rent now
+              </span>
+              <span class="btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="icon w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3.75v16.5M2.25 12h19.5M6.375 17.25a4.875 4.875 0 0 0 4.875-4.875V12m6.375 5.25a4.875 4.875 0 0 1-4.875-4.875V12m-9 8.25h16.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H3.75a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5Zm12.621-9.44c-1.409 1.41-4.242 1.061-4.242 1.061s-.349-2.833 1.06-4.242a2.25 2.25 0 0 1 3.182 3.182ZM10.773 7.63c1.409 1.409 1.06 4.242 1.06 4.242S9 12.22 7.592 10.811a2.25 2.25 0 1 1 3.182-3.182Z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          }
+        </div>
+      </aside>
+      </div>
+    }
+  </div>
+</div>
+

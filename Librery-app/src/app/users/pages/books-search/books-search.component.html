@@ -1,0 +1,142 @@
+<div class="contenedor">
+
+  <div class="busqueda-name">
+    <div class="w-full h-auto flex justify-center mt-4 mx-auto xl:w-4/5 lg:w-3/4 md:w-full sm:w-full">
+      <form [formGroup]="formFilters" class="w-full h-auto gap-3">
+        <div class="w-full flex flex-col gap-2  md:flex-row md:px-8 lg:px-0 px-5">
+          <div class="md:w-[85%] w-full flex md:justify-around lg:justify-between justify-start">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Books title</mat-label>
+              <input type="text"
+                     placeholder="Type the book title or pick one of this"
+                     aria-label="BooksTitle"
+                     matInput
+                     formControlName="title"
+                     [matAutocomplete]="auto">
+              <button class="mx-2 button-search cursor-pointer w-full h-full z-50"
+              mat-icon-button matSuffix (click)="getBooks()">
+                <mat-icon>search</mat-icon>
+              </button>
+              <mat-autocomplete #auto="matAutocomplete">
+                @for (option of books; track option) {
+                  <mat-option [value]="option.titulo">
+                    {{option.titulo}}
+                  </mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class=" md:w-auto w-full flex items-start md:my-[0.8rem] md:mt-3 -mt-5 gap-2  z-50">
+              <div class="checkbox-wrapper md:mr-2 flex items-center justify-center">
+                <input [checked]="showAdvOptions" type="checkbox" id="advOptions" class="peer hidden"
+                (change)="showAdvOptions = !showAdvOptions">
+                <svg viewBox="0 0 35.6 35.6" class="w-8 h-8">
+                  <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                  <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                  <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                </svg>
+                <label for="advOptions" class="font-perso cursor-pointer font-bold duration-200 ease-in-out -mt-[.4rem] px-2"
+                  [ngClass]="{'text-[#537841] underline': showAdvOptions, '': !showAdvOptions}">
+                  Show advance options
+                </label>
+              </div>
+          </div>
+        </div>
+
+        <!-- OPCIONES AVANZADAS DE BUSQUEDA  -->
+        <div class="w-auto absolute" [ngClass]="{'exit': !showAdvOptions, 'entry': showAdvOptions}">
+          <div class="w-full flex flex-wrap justify-center bg-white gap-4 border-x border-b border-gray-300 rounded-lg shadow-xl p-6">
+            <!-- Si es rentable o de pago -->
+            <div class="bg-white shadow-md rounded-lg p-2 w-full md:w-1/3 xl:w-[20%]">
+              <p class="font-bold text-lg mb-3 font-perso">Acquisition options</p>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <mat-checkbox formControlName="rent" color="primary" [checked]="forRent" (change)="handleRentChange($event)"><span class="font-perso font-semibold">For rent</span></mat-checkbox>
+                </div>
+                <div>
+                  <mat-checkbox formControlName="buy" color="primary" [checked]="forBuy" (change)="handleBuyChange($event)"><span class="font-perso font-semibold">For buy</span></mat-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <!-- El año de publicacion xd -->
+            <div class="bg-white shadow-md rounded-lg p-2 w-full md:w-1/3 xl:w-[20%]">
+              <p class="font-bold text-lg mb-3 font-perso">Publication year</p>
+              <div>
+                <div class="card flex justify-content-center">
+                  <p-calendar
+                      selectionMode="range"
+                      view="year"
+                      dateFormat="yy"
+                      formControlName="publication_date"
+                      class="w-full"/>
+                </div>
+              </div>
+            </div>
+            <!-- Editorial -->
+            <div class="bg-white shadow-md rounded-lg p-2 w-full md:w-1/3 xl:w-[20%]">
+              <p class="font-bold text-lg mb-3 font-perso">Editorial</p>
+              <div>
+                <div class="card flex justify-content-center card-editorial">
+                  <mat-form-field appearance="outline" class="w-full">
+                    <mat-select placeholder="Select the editorial" formControlName="editorial">
+                      @for (editorial of editoriales; track editorial.id) {
+                        <mat-option [value]="editorial.id">
+                          {{editorial.publisher_name}}
+                        </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+            </div>
+            <!-- Genero -->
+            <div class="bg-white shadow-md rounded-lg p-2 w-full md:w-1/3 xl:w-[20%]">
+              <p class="font-bold text-lg mb-3 font-perso">Genres</p>
+              <div class="card flex justify-content-center">
+                <p-chips formControlName="genres" max="3" styleClass="p-chips"/>
+              </div>
+            </div>
+
+            <div class="flex justify-center items-center w-full md:w-1/3 xl:w-[20%]" >
+              <button class="rounded-full bg-[#aabf8a] p-3" (click)="formFilters.reset()"
+              matTooltip="Reset filters"
+              matTooltipPosition="above">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@if(showLoader === false){
+  <div class="w-full">
+    <div class="mb-8">
+      <p>
+        <span class="text-[1.75rem] font-perso font-bold z-0 pl-5 mb-10">
+          List of our available books
+        </span>
+      </p>
+      <hr class="my-3">
+    </div>
+    <div class="w-full grid lg:grid-cols-4 xl:grid-cols-5 md:grid-cols-3 grid-cols-1 xl:gap-10 lg:gap-6 md:gap-4 gap-y-6 px-3 lg:px-10 md:px-4">
+      @for(book of books | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total } ; track $index){
+        <app-book-card [book]="book"></app-book-card>
+      }
+    </div>
+    <div class="flex justify-center w-full my-10 pb-10 text-base">
+      <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+  </div>
+} @else {
+  <div class="w-full h-[80vh] flex justify-center items-center">
+    <app-loader></app-loader>
+  </div>
+}

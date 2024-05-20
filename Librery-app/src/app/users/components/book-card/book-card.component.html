@@ -1,0 +1,52 @@
+<div class="w-full h-full rounded-lg bg-[#f5f7e7] border border-[#cfcfcf] sombra-contenedor py-5 md:mx-0">
+  <div class="px-2 flex min-h-[70%] justify-center">
+    <a href="#">
+      <img class="px-8 pt-3 rounded-t-lg w-full h-[95%] " [src]="book.url" [alt]="book.titulo"/>
+    </a>
+  </div>
+  <!-- INFORMACION  -->
+  <div class="mx-2 min-h-[30%]">
+    <div class="min-h-[60%] flex items-start justify-center">
+      <p class="text-center font-perso font-bold text-[1.25rem] md:text-[1rem] min-h-12">
+        {{book.titulo}}
+        <br>
+        <span class="text-center font-perso italic text-sm font-normal">
+          {{book.author | titlecase}} - {{book.fecha_publicacion}}
+        </span>
+      </p>
+    </div>
+
+   <div class="min-h-[40%]">
+    <div class="flex mx-2 justify-between mt-3">
+      <div class="flex w-full justify-between min-h-8 border-b border-gray-700">
+        <p class="font-perso font-semibold md:text-sm text-base underline underline-offset-1">
+          @if(book.alquilar === 1){
+            For rent
+          }
+          @if(book.comprar === 1){
+            For sale
+          }
+        </p>
+        <p class="font-perso font-base md:text-sm text-base text-right">
+          @if(book.alquilar === 1){
+            {{book.editorial}}
+          }
+          @if(book.comprar === 1){
+            Value: <span class="font-perso font-semibold md:text-sm text-base text-right">{{book.valor | currency}}</span>
+          }
+        </p>
+      </div>
+    </div>
+    <div class="flex justify-center my-2 items-center md:h-[35%] h-[50%]">
+      <button class="btn-read font-perso" [routerLink]="['/books/', book.identificador]">
+        Read more
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </button>
+    </div>
+   </div>
+  </div>
+</div>
+
+

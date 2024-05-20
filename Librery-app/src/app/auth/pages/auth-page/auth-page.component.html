@@ -1,0 +1,19 @@
+
+<article class="w-full h-full flex-container">
+  <section class="lg:w-2/5 md:w-4/5 w-full sm:mx-0 mx-4 rounded-md bg-white flex-container md:py-6 py-2"
+  [ngClass]="{'animation-login': animation == true, 'animation-register': animation == false}">
+    <div class="sm:w-3/4 w-[90%] p-5">
+      <div class="flex justify-center">
+        <div class="rounded-full flex-container ">
+          <img src="assets/Logo.png" alt="Logo" class=" md:w-32 md:h-32 w-24 border border-black rounded-full">
+        </div>
+      </div>
+      <div class="w-full">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </section>
+</article>
+
+
+

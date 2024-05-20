@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+html, body { height: 100%; }
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+
+::-webkit-scrollbar {
+  background: #d5d8d5;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #777777e3;
+  border-radius: 20px;
+}
+
+.font-perso {
+  font-family: "Rethink Sans", sans-serif !important;
+}
+
+
+.p-component, .p-element{
+  color: black;
+  margin: 0;
+  font-family: "Rethink Sans", sans-serif !important;
+  font-size: 1rem;
+  background: #ffffff;
+}
+
+
+
+.p-inputtext {
+  padding: 0.75rem 0.75rem !important;
+  border-radius: 5px;
+  font-family: "Rethink Sans", sans-serif !important;
+  border: 1px solid #828283 !important;
+}
+
+.p-datepicker {
+  padding: 1rem 1.4rem;
+  box-shadow: 0px 2px 5px rgb(53, 53, 53);
+  border-radius: 5px;
+  .p-ripple, .p-datepicker-decade {
+    margin: 0.2rem 0;
+    font-family: "Rethink Sans", sans-serif !important;
+  }
+  .p-hidden-accessible {
+    font-family: "Rethink Sans", sans-serif !important;
+    padding: 0 0.2rem;
+  }
+  .p-calendar {
+    width: 100% !important;
+  }
+}
+
+
+
+.mat-label, .mat-mdc-select-placeholder, .mat-mdc-option, .mat-mdc-select-min-line {
+  font-family: "Rethink Sans", sans-serif !important;
+}
+.mat-mdc-option {
+  font-size: .92rem !important;
+  min-height: 35px !important;
+}
+div.mat-mdc-select-panel {
+  max-height: 200px !important;
+}
+
+
+
+.mat-icon {
+  width: auto !important;
+  height: auto !important;
+  font-family: 'Material icons' !important;
+}
+
+.p-chips-token {
+  display: flex;
+  gap: 4px;
+  background: #babf9b98;
+  padding: 0.2rem 0.4rem;
+  border-radius: 20px;
+  margin: 0 5px;
+  svg {
+    background-color: #babf9b98;
+  }
+  span {
+    font-family: "Rethink Sans", sans-serif !important;
+  }
+}
+.p-chips-multiple-container{
+  li{
+    width: auto;
+  }
+  li:nth-child(4) {
+    display: none;
+  }
+}
+
+.p-chips {
+  width: 100% !important;
+}
+
+.ngx-pagination .current {
+  color: black !important;
+  background-color: #aabf8a !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 5px;
+}
+.ngx-pagination li, .ngx-pagination li span, .ng-star-inserted, .mat-tooltip {
+  font-family: "Rethink Sans", sans-serif !important;
+}

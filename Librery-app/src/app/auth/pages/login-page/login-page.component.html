@@ -1,0 +1,58 @@
+<div>
+  <div>
+    <h2 class="text-4xl">Hello, <br> <span class="font-bold text-5xl text-[#274A29]">Welcome! </span></h2>
+  </div>
+ <form [formGroup]="loginForm">
+    <!-- User or email input -->
+    <mat-form-field appearance="outline" class="w-full my-1.5">
+      <mat-label>Username o Email</mat-label>
+      <input matInput formControlName="user" />
+      @if(loginForm.get("user")?.invalid){
+        <mat-error>You must enter a value</mat-error>
+      }
+    </mat-form-field>
+
+   <!-- Password input -->
+    <mat-form-field appearance="outline" class="w-full my-1.5">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+      (blur)="checkError('password')">
+      <button class="mx-2"
+      mat-icon-button matSuffix (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint class="w-full">
+        <div class="flex justify-between items-center mx-2 -mt-5 w-full">
+          <div class="text-xs self-start">
+                <input type="radio" id="remember" class="hidden peer"
+                [checked]="remember" (click)="changeRemember()">
+                <label for="remember" class="cursor-pointer duration-100" [ngClass]="{'text-[#A6CAA6] font-bold underline' : remember}">Remember me
+                </label>
+           </div>
+           <div class="hover:text-slate-950 text-slate-600 cursor-pointer font-bold text-xs sm:text-start text-end" (click)="alert('Jijija')">
+             Forgot u password?
+           </div>
+        </div>
+      </mat-hint>
+      @if(loginForm.get("password")?.invalid){
+        <mat-error>{{errorValue}}</mat-error>
+      }
+    </mat-form-field>
+    <!-- login button -->
+    <div class="flex-container my-4">
+      <button mat-flat-button (click)="checkLogin()">
+        <span class="text-base font-bold">Login</span>
+        <mat-icon>
+          login
+        </mat-icon>
+      </button>
+    </div>
+</form>
+</div>
+<hr class="my-4">
+<div class="text-center">
+  <p>
+    Not have a account? <a [routerLink]="['/auth/register']" class="text-[#6c9e6c] font-bold">Sing up here!</a>
+  </p>
+</div>

@@ -1,0 +1,141 @@
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contenedor {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-getBack{
+  border-radius: 100%;
+  background: #E8EFCF;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 50ms;
+}
+
+.btn-getBack:hover {
+  outline: 2px solid #8ca391;
+  outline-offset: 2px;
+}
+
+::ng-deep .mat-h2,
+::ng-deep .mat-headline-6,
+::ng-deep .mat-typography .mat-h2,
+::ng-deep .mat-typography .mat-headline-6,
+::ng-deep .mat-typography h2 {
+  margin: 0 !important;
+}
+::ng-deep .mat-body p,
+::ng-deep .mat-body-2 p,
+::ng-deep .mat-typography .mat-body p,
+::ng-deep .mat-typography .mat-body-2 p,
+::ng-deep .mat-typography p {
+  margin: 0 !important;
+}
+
+.ctn-informacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  flex-wrap: wrap;
+}
+
+.subtitles {
+  font-size: 1.2rem;
+}
+
+
+.btn-form {
+  width: 7.5rem;
+  height: 2.5rem;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  span, .icon {
+    transition: top 0.5s;
+  }
+  .btn-span {
+    color: black;
+    font-family: "Rethink Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  .icon{
+    position: absolute;
+    width: 100%;
+    top: 150%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+
+.btn-form:hover {
+  .btn-span{
+    top: -100%;
+  }
+  .icon {
+    top: 50%;
+  }
+}
+
+
+.btn span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+}
+
+.btn-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn:hover .btn-text-one {
+  top: -100%;
+}
+
+.btn:hover .btn-text-two {
+  top: 50%;
+}

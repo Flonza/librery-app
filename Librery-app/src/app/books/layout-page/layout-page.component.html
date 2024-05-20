@@ -1,0 +1,57 @@
+<nav class="w-1/4 bg-[#50340ed7] min-h-full rounded-r-lg">
+  <div class="relative top-4 left-[90%] w-7 h-7">
+    <button
+      class="flex justify-center items-center hover:bg-[#3a39398a] rounded-full p-1 duration-100 hover:outline hover:outline-2 hover:outline-[#3a3939] outline-offset-2 animacion">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div class="flex flex-wrap justify-center w-full">
+    <img src="assets/Logo.png" alt="Logo de la pagina" class="w-28 h-28 border-2 border-black rounded-full my-2" />
+    <div class="min-w-full">
+      <p class="text-center text-2xl text-[#082209] font-bold w-full perso-font">
+        Library app
+      </p>
+    </div>
+  </div>
+  <hr class="w-[90%] h-0.5 mx-auto my-4 border-0 rounded-lg bg-black" />
+  <div class="my-5 w-full">
+    <ul>
+      @for(item of menu; track item.id){
+      <li class="w-full h-10 hover:bg-[#2222223b] cursor-pointer flex justify-between items-center" (click)="item.subItems.length > 0 ? clickMenu = !clickMenu : null">
+        <a class="text-lg ml-5">
+          {{ item.title | titlecase }}
+        </a>
+        <div class="mr-5">
+          @if(item.subItems.length != 0){
+            <input type="radio" id="seeMenu"
+            class="hidden peer " [checked]="clickMenu" (change)="setClass()" (click)="clickMenu = !clickMenu">
+            <label for="seeMenu" (click)="clickMenu = !clickMenu">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 cursor-pointer" [ngClass]="setClass()">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </label>
+          }
+        </div>
+      </li>
+      @if(clickMenu){
+        <div class="border-l-2 border-[#30210b] ml-2 " [@fadeInOut]="clickMenu">
+          <ul>
+            @for(item of item.subItems; track item.id){
+              <li class="w-full h-10 hover:bg-[#2222223b] cursor-pointer flex justify-between items-center">
+                <a class="text-lg ml-3">
+                  {{ item.title | titlecase }}
+                </a>
+              }
+          </ul>
+        </div>
+      }
+      }
+    </ul>
+  </div>
+</nav>
+
+

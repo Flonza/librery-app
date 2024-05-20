@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+@keyframes color-change-2x {
+  0% {
+    background: #253625;
+  }
+  100% {
+    background: #6a816ab2;
+  }
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+.font-perso {
+  font-family: "Rethink Sans", sans-serif;
+}
+
+.contenedor-links {
+  a {
+    font-family: "Rethink Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: ease 200ms;
+    @media (640px <= width <= 748px) {
+      font-size: 0.8rem;
+    }
+
+    @media (width <= 639px) {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+.nev-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto + 1rem;
+  background: #b1c096;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+
+.sticky-menu.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+::ng-deep .mat-body p,
+::ng-deep .mat-body-2 p,
+::ng-deep .mat-typography .mat-body p,
+::ng-deep .mat-typography .mat-body-2 p,
+::ng-deep .mat-typography p {
+margin: 0 !important;
+}
+
+
+
+.anchorActive {
+  font-size: larger;
+  border-bottom: 2px #f5fcea solid;
+  transition: ease 200ms;
+}
+
+
+.change-bg {
+  animation: color-change-2x;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+}
+
+
+.bottones {
+  --primary-color: #645bff;
+  --secondary-color: #fff;
+  --hover-color: #111;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6rem;
+  .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+
+  .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+}
+
+.top-button {
+  span {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.top-button:hover {
+  .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  svg {
+    transform: translateY(-0.5em);
+  }
+  span {
+    transform: translateY(-0.5em) rotate(180deg);
+  }
+}
+
+
+
+
+.bottones:hover {
+  scale: 1.05;
+  transition-duration: 100ms;
+  .arrow{
+    background: white;
+  }
+  .arrow:before {
+    right: 0;
+  }
+}
+
+.bottones:active {
+  transition: ease-in 50ms;
+  box-shadow: 0 0 5px gray;
+  outline: 2px #222 solid;
+  outline-offset: 2px;
+}
+
+.contenedor-rutas {
+  width: 100% !important ;
+  @media (width <= 400px) {
+    position: relative;
+    left: 0%;
+    top:0%;
+  }
+}
+
+.icons-conteiner{
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.hr {
+  background: #000 !important;
+  height: 2px;
+  border: 0;
+  margin: 0 5%;
+  border-radius: 20px;
+}
+
+
+
+.conteiner-foote-ancla{
+  transition: ease-in-out 200ms;
+}
+.conteiner-foote-ancla:hover {
+  transform: translateY(-0.5rem);
+  transition-duration: 200ms;
+  box-shadow: 0 5px 10px #292828;
+}

@@ -1,0 +1,147 @@
+<div class="contenedor font-perso pt-[4.5rem]">
+    <!-- SLIDER  -->
+ <header>
+  <article class="relative">
+    <div class="contenedor-wel">
+      <img src="assets/resources/Home-librery.jpg" alt="Libreria">
+    </div>
+    <div class="ctn-image">
+      <img src="assets/resources/Home-librery.jpg" alt="Libreria" class="sin-blur">
+      <div class="overlay-home-text xl:w-[42%] lg:w-2/4 sm:w-2/4 sm:p-5 px-2 pb-0">
+        <article class="text-left">
+          <div class="texto">
+            <span class="text-left font-perso text-slate-850 xl:text-xl lg:text-lg md:text-base sm:text-sm text-[0.7rem]">
+              Welcome to Library app, your ultimate literary destination! Immerse yourself in a world of knowledge and entertainment with our extensive collection of books for sale and rent.
+              <br>
+            </span>
+            <span class="text-left font-perso text-slate-850 font-bold xl:text-2xl lg:text-xl md:text-lg sm:text-base text-[0.75rem]">
+              Discover exciting titles, learn from top authors, and find the inspiration you need for your next reading journey. <br> Start your literary adventure now!
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </article>
+ </header>
+
+  <hr class="separator separator--line" />
+  <!-- Redireccion a rentar o comprar libros -->
+    <div class="w-full h-auto flex-wrap flex justify-center gap-y-5">
+        <div class="flex justify-center md:w-2/4 w-full">
+            <p class="text-center md:text-2xl text-lg font-perso">
+              Whether you prefer to hold the book in your hands or enjoy it digitally, our app allows you to buy or rent books with total convenience.
+            </p>
+        </div>
+        <div class="flex justify-center items-center my-5 md:mx-0 mx-2 w-full">
+            <div class="flex justify-around md:gap-10">
+                <a href="" class="font-perso font-bold botton-redirect bg-[#739072] raise ">Rent a book</a>
+                <div class="md:mx-10 mx-2 my-auto flex justify-between items-center 3/5">
+                  <div class="border border-black md:w-2/5 w-10"></div>
+                  <p>Or</p>
+                  <div class="border border-black md:w-2/5 w-10"></div>
+                </div>
+                <a href="" class="font-perso font-bold botton-redirect bg-[#B19470] raise">Buy a book</a>
+            </div>
+        </div>
+    </div>
+
+    <hr class="separator separator--line" />
+
+<!-- Redireccion al catalogo de los libros -->
+    <div class="w-full flex justify-center">
+      <div class="w-full flex justify-center relative">
+        <img src="assets/resources/Books-home.jpg" class="md:w-[75%] w-full opacity-85">
+        <div class="overlay-text md:w-[40%] w-4/5 lg:p-5 px-1">
+          <h4 class="text-center font-perso text-slate-850 hidden md:block">
+            <span class="font-perso text-gray-900">
+            </span>
+            <br>
+            <span class="">
+            </span>
+          </h4>
+          <article class="text-center">
+            <div>
+              <h4>
+                <span class="text-center font-perso text-slate-850 lg:text-2xl md:text-1xl text-base span-text" >
+                  Discover your next adventure in our book catalog.
+                </span>
+              </h4>
+            </div>
+            <div class="md:my-2">
+              <h4>
+                <span class="text-black lg:text-3xl md:text-2xl text-base font-extrabold font-perso span-text">
+                  Where every page is a journey through infinite stories!
+                </span>
+              </h4>
+            </div>
+          </article>
+          <div class="flex justify-center my-2">
+            <a style="--clr: #7808d0" class="button" [routerLink]="['/', 'books']">
+              <span class="button__icon-wrapper">
+                  <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                      <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                  </svg>
+                  <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+                      <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                  </svg>
+              </span>
+              Explore All
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="separator separator--line" />
+
+    <!-- Inicio de sesion o registro -->
+    <div class="w-full flex justify-center pb-20">
+      <div class="lg:w-2/4 md:w-3/4 w-full flex flex-wrap gap-y-5 mx-2">
+        <h4 class="w-full text-center font-perso">
+          Join the Library app community of readers!
+        </h4>
+        <!-- LOGIN -->
+        <div class="w-[100%] flex contenedor-ingresos md:gap-8 gap-2 mt-5"
+        [ngClass]="{'login-entry flex': loginVisible, 'login-exit': !loginVisible}" #logBotton>
+          <div class="w-[70%]">
+            <p class="md:text-base font-medium text-left p-2 font-perso">
+              Log in to enjoy a personalized experience, access your saved preferences, track your orders and much more.
+              <br> <span class="font-bold font-perso">Don't miss out on the latest news and exclusive offers reserved for our members.</span>
+            </p>
+          </div>
+          <div class="flex justify-center items-center w-[30%]">
+            <button class="sign-in-button flex" [routerLink]="['/auth/login']" >
+              <div class="svg-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="md:w-6 md:h-6 w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 19.5-15-15m0 0v11.25m0-11.25h11.25" />
+                </svg>
+              </div>
+              Sign in
+            </button>
+          </div>
+        </div>
+
+        <!-- REGISTRO -->
+        <div class="w-[100%] flex contenedor-registros md:gap-8 gap-2 mt-5 p-0"
+        [ngClass]="{'res-entry': resVisible, 'res-exit': !resVisible}" #resBotton>
+          <div class="flex justify-center items-center w-[30%]">
+            <button class="sign-up-button flex" [routerLink]="['/auth/register']" >
+              Sign up
+              <div class="svg-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="md:w-6 md:h-6 w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div class="w-[70%]">
+            <p class="md:text-base font-medium text-right p-2 font-perso ">
+              Join our community today! Sign up to access exclusive content, receive personalized updates and participate in exciting events and promotions.
+              <br>
+              <span class="font-bold font-perso">Discover all we have to offer and become part of our online family!</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@keyframes flipAdelanteAtras {
+  0% {
+    transform: rotateY(70deg);
+    transform-origin: right;
+    opacity: 0
+  }
+
+  100% {
+    transform: rotateY(0);
+    transform-origin: right;
+    opacity: 1
+  }
+}
+
+@keyframes flipAtrasAdelante  {
+  0% {
+    transform: rotateY(100deg);
+    transform-origin: left;
+    opacity: 0
+  }
+
+  100% {
+    transform: rotateY(0);
+    transform-origin: left;
+    opacity: 1
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borde-personalizated {
+  border: 1px solid #26233dd7;
+  box-shadow: 0px 0px 7px #6b6767b6;
+}
+
+.perso-bg {
+  background-image: url("../../../../assets/images/Cuarta.jpg");
+}
+
+article {
+  position: relative;
+}
+
+article::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("../../../../assets/images/Cuarta.jpg");
+  opacity: 0.6;
+  z-index: -1;
+}
+
+
+.animation-login {
+  animation-name: flipAtrasAdelante;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  transform: scaleY(1)
+}
+
+.animation-register {
+  animation-name: flipAdelanteAtras;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+}

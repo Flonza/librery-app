@@ -1,0 +1,88 @@
+<div class="my-2">
+  <div class="text-center md:text-2xl text-lg font-bold">
+    <p>Sign up ;)</p>
+  </div>
+  <form [formGroup]="registerForm" >
+    <div class="grid md:grid-cols-2 gap-2 md:my-1.5 my-3">
+      <mat-form-field appearance="outline" class="w-full" >
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" (blur)="checkValues('name')" />
+        @if (registerForm.get("name")?.invalid) {
+          <mat-error>{{errorMessage['name']}}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full" >
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" (blur)="checkValues('lastName')" />
+        @if (registerForm.get("lastName")?.invalid) {
+          <mat-error>{{ errorMessage['lastName'] }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="md:my-1.5 my-3">
+      <mat-form-field appearance="outline" class="w-full" >
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" (blur)="checkValues('username')" />
+        @if (registerForm.get("username")?.invalid) {
+          <mat-error>{{errorMessage['username']}}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="md:my-1.5 my-3">
+      <mat-form-field appearance="outline" class="w-full"  >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" (blur)="checkValues('email')"/>
+        @if (registerForm.get("email")?.invalid) {
+          <mat-error>{{errorMessage['email']}}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="md:my-1.5 my-3">
+      <mat-form-field appearance="outline" class="w-full" >
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide1 ? 'password' : 'text'" formControlName="password" (blur)="checkValues('password')" >
+        @if (registerForm.get("password")?.invalid) {
+          <mat-error>{{errorMessage['password']}}</mat-error>
+        }
+        <button class="mx-2"
+        mat-icon-button matSuffix (click)="hide1 = !hide1"
+        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+          <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="md:my-1.5 my-3 md:mb-0 mb-5">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Confirm your password</mat-label>
+        <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="confirmPass" (blur)="checkValues('confirmPass')">
+        <button class="mx-2"
+        mat-icon-button matSuffix (click)="hide2 = !hide2"
+        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+          <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        @if (registerForm.get("confirmPass")?.invalid) {
+          <mat-error>{{errorMessage['confirmPass']}}</mat-error>
+        }
+        <mat-hint class="md:text-left text-xs text-center ">
+          The password must have 1 mayus, 1 minus and 4 numbers
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="flex-container">
+      <button mat-flat-button (click)="sendData()">
+        <span class="text-base font-bold">Sign up</span>
+        <mat-icon matSuffix>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+          </svg>
+        </mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
+
+<hr class="my-4 md:mb-0 mb-2">
+
+<div class="text-center">
+  U already have a account? <a [routerLink]="['/auth/login']" class="text-[#6c9e6c] font-bold" >Sign in</a>
+</div>
